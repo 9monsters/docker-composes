@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  redis-master-01:
+    image: redis
+    container_name: redis-master-01
+    volumes:
+      - data-redis-master-01:/usr/share/elasticsearch/data
+    ports:
+      - 6379:6379
+    networks:
+      - redis-net
+volumes:
+  data-redis-master-01:
+
+networks:
+  esnet:
