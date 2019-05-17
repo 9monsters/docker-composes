@@ -4,8 +4,16 @@ services:
   mysql:
     image: mysql
     container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ALLOW_EMPTY_PASSWORD: example
+      # MYSQL_RANDOM_ROOT_PASSWORD: example
+      # MYSQL_ONETIME_PASSWORD: example
     volumes:
-      - data-mysql:/usr/share/elasticsearch/data
+      - data-mysql:/var/lib/mysql
     ports:
       - 3306:3306
       - 33060:33060
