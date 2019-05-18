@@ -21,6 +21,7 @@ services:
     #   - mysql-net
 volumes:
   data-mysql:
+    driver: local
 
 # networks:
 #   mysql-net:
