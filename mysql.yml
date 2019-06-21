@@ -17,11 +17,12 @@ services:
     ports:
       - 3306:3306
       - 33060:33060
-    # networks:
-    #   - mysql-net
+    networks:
+      - local
+
 volumes:
   data-mysql:
     driver: local
 
-# networks:
-#   mysql-net:
+networks:
+  local:
