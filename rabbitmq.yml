@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+    volumes:
+      - data-rabbitmq:/var/lib/rabbitmq/
+    ports:
+      - 15672:15672
+    networks:
+      - local
+
+volumes:
+  data-rabbitmq:
+    driver: local
+
+networks:
+  local:
