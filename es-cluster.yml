@@ -7,12 +7,13 @@ services:
     container_name: es-master-01
     environment:
       - node.name=es-master-01
-      - discovery.seed_hosts=es-master-01,es-slave-03,es-slave-01,es-slave-02
+      - discovery.seed_hosts=es-master-01,es-slave-01,es-slave-02
       - cluster.initial_master_nodes=es-master-01
       - cluster.name=es-docker-cluster
       - bootstrap.memory_lock=true
       - indices.fielddata.cache.size=40%
       - indices.breaker.total.limit=90%
+      - indices.breaker.request.limit=40% 
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -XX:-UseConcMarkSweepGC -XX:-UseCMSInitiatingOccupancyOnly -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=75"
 
     ulimits:
@@ -32,12 +33,13 @@ services:
     container_name: es-slave-01
     environment:
       - node.name=es-slave-01
-      - discovery.seed_hosts=es-master-01,es-slave-03,es-slave-01,es-slave-02
+      - discovery.seed_hosts=es-master-01,es-slave-01,es-slave-02
       - cluster.initial_master_nodes=es-master-01
       - cluster.name=es-docker-cluster
       - bootstrap.memory_lock=true
       - indices.fielddata.cache.size=40%
       - indices.breaker.total.limit=90%
+      - indices.breaker.request.limit=40% 
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -XX:-UseConcMarkSweepGC -XX:-UseCMSInitiatingOccupancyOnly -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=75"
     
     ulimits:
@@ -55,12 +57,13 @@ services:
     container_name: es-slave-02
     environment:
       - node.name=es-slave-02
-      - discovery.seed_hosts=es-master-01,es-slave-03,es-slave-01,es-slave-02
+      - discovery.seed_hosts=es-master-01,es-slave-01,es-slave-02
       - cluster.initial_master_nodes=es-master-01
       - cluster.name=es-docker-cluster
       - bootstrap.memory_lock=true
       - indices.fielddata.cache.size=40%
       - indices.breaker.total.limit=90%
+      - indices.breaker.request.limit=40% 
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g -XX:-UseConcMarkSweepGC -XX:-UseCMSInitiatingOccupancyOnly -XX:+UseG1GC -XX:InitiatingHeapOccupancyPercent=75"
     
     ulimits:
